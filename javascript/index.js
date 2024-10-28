@@ -49,7 +49,7 @@ function step4(callback){
 function step5(){
   document.querySelector("#mashedPotatoes").innerHTML += `<li>${mashedPotatoes[4]}</li>`;
   document.querySelector("#mashedPotatoes").innerHTML += `<li>mashed Potatoes Are Ready</li>`;
-
+ document.querySelector("#mashedPotatoesImg").removeAttribute("hidden")
 }
 
 step1(function(){
@@ -92,7 +92,10 @@ obtainInstruction("steak", 0)
     return obtainInstruction("steak", 7)})
   .then((result) => {
     document.querySelector("#steak").innerHTML += `<li>${result}</li>`;
-    return obtainInstruction("steak", 8)})
+    return obtainInstruction("steak", 8)
+    document.querySelector("#steakImg").removeAttribute("hidden")
+  
+  })
   .catch((e) => {
     console.log(e);
   });
@@ -100,5 +103,29 @@ obtainInstruction("steak", 0)
 // Iteration 3 using async/await
 // ...
 
+async function makeBroccoli(){
+  try{
+    const step1 = await obtainInstruction("broccoli" ,0 )
+    const step2 = await obtainInstruction("broccoli" ,1 )
+    const step3 = await obtainInstruction("broccoli" ,2 )
+    const step4 = await obtainInstruction("broccoli" ,3 )
+    const step5 = await obtainInstruction("broccoli" ,4 )
+    const step6 = await obtainInstruction("broccoli" ,5 )
+    const step7 = await obtainInstruction("broccoli" ,6 )
+    
+    document.querySelector("#broccoli").innerHTML += `<li>${step1}</li>`;
+    document.querySelector("#broccoli").innerHTML += `<li>${step2}</li>`;
+    document.querySelector("#broccoli").innerHTML += `<li>${step3}</li>`;
+    document.querySelector("#broccoli").innerHTML += `<li>${step4}</li>`;
+    document.querySelector("#broccoli").innerHTML += `<li>${step5}</li>`;
+    document.querySelector("#broccoli").innerHTML += `<li>${step6}</li>`;
+    document.querySelector("#broccoli").innerHTML += `<li>${step7}</li>`;
+
+  }catch (e) {
+    console.log('oops, something went wrong...');
+    console.log(e);
+  }
+}
+makeBroccoli()
 // Bonus 2 - Promise all
 // ...
